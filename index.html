@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>App Demo</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/jquery.mobile-1.3.0.min.css" />
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.mobile-1.3.0.min.js"></script>
+    <link rel="stylesheet" href="css/application.css" />
+<script type="text/javascript" charset="utf-8">
+
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    function onDeviceReady() {
+
+    }
+
+     function storeName(){
+          var myName = document.getElementById("nombre").value;
+          window.localStorage.setItem("nombre", myName);
+
+          var result = document.getElementById("result");
+          result.innerHTML = "Hola Welcome:" + window.localStorage.getItem("nombre");
+          return false;
+     }
+
+
+    </script>
+</head>
+
+<body>
+<div data-role="page" id="login">
+        <div data-role="header">
+            <h1>MyAPP</h1>
+        </div>
+        <div data-role="content">
+        <form id="loginform">
+            <label for="usuario">Usuario</label>
+            <input type='text' id='nombre' onBlur='storeName()'></p>
+
+            <div id='result'></div>
+            <a href="#" onclick='storeName()' data-role="button" data-inline="true">Guardar</a>
+        </form>
+        </div>
+
+        <div data-role="footer" data-theme="c" data-position="fixed">
+            <h4>&copy; 2012 - Myapp</h4>
+        </div>
+    </div><!-- /login -->
+
+    </body>
+</html>
