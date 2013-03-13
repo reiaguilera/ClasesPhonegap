@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>localStorage Example</title>
+
+        <script src="js/cordova-2.4.0.js"></script>
+
+    <script type="text/javascript" charset="utf-8">
+
+    // Wait for Cordova to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // Cordova is ready
+    //
+    function onDeviceReady() {
+      console.log("error");
+        window.localStorage.setItem("key", "value");
+        var keyname = window.localStorage.key(i);
+        // keyname is now equal to "key"
+        var value = window.localStorage.getItem("key");
+        // value is now equal to "value"
+        //window.localStorage.removeItem("key");
+        window.localStorage.setItem("key2", "value2");
+        //window.localStorage.clear();
+        // localStorage is now empty
+    }
+
+    </script>
+  </head>
+  <body>
+     <form>
+    <p>What's your name?<br/>
+     <input type='text' id='name' onKeyUp='storeName()'></p>
+
+     </form>
+
+     <div id='result'></div>
+  </body>
+</html>

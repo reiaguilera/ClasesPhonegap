@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Connectivity Example</title>
+
+    <script type="text/javascript" src="js/cordova-2.4.0.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() {
+        checkConnection();
+    }
+
+    function checkConnection() {
+        console.log("error");
+        var networkState = navigator.network.connection.type;
+
+        var states = {};
+        states[Connection.UNKNOWN]  = 'Unknown connection';
+        states[Connection.ETHERNET] = 'Ethernet connection';
+        states[Connection.WIFI]     = 'WiFi connection';
+        states[Connection.CELL_2G]  = 'Cell 2G connection';
+        states[Connection.CELL_3G]  = 'Cell 3G connection';
+        states[Connection.CELL_4G]  = 'Cell 4G connection';
+        states[Connection.NONE]     = 'No network connection';
+
+        alert('Connection type: ' + states[networkState]);
+    }
+
+    </script>
+  </head>
+  <body>
+    <p>informará del estado de la red</p>
+  </body>
+</html>
