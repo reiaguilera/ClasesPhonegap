@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <title>Device Properties Example</title>
+
+    <script type="text/javascript" src="cordova-2.4.0.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    function recordAudio() {
+        var src = "myrecording.mp3";
+        var mediaRec = new Media(src, onSuccess, onError);
+
+        
+        mediaRec.startRecord();
+
+    }
+
+    
+    function onDeviceReady() {
+        startRecording();
+    }
+
+
+    function startRecording() {
+        recordAudio();
+    }
+
+    function stopRecording(){
+      mediaRec.stopRecord();
+
+    }
+    
+    function onSuccess() {
+        console.log("recordAudio():Audio Success");
+    }
+
+    
+    function onError(error) {
+        alert('code: '    + error.code    + '\n' + 
+              'message: ' + error.message + '\n');
+    }
+
+ 
+    function setAudioPosition(position) {
+        document.getElementById('audio_position').innerHTML = position;
+    }
+
+    </script>
+  </head>
+  <body>
+    <a href="#" onClick="startRecording()">Start Recording</a><br/><br/>
+    <a href="#" onClick="stopRecording()">Stop Recording</a>
+    <p id="audio_position"></p>
+  </body>
+</html> 

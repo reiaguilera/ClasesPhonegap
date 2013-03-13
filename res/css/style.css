@@ -1,0 +1,11 @@
+.titulo {
+	font-size: 1.5em !important;
+}
+
+.perfil input[disabled] {
+	border: none;
+}
+
+.perfil .form-text {
+	padding: .3em 5px;
+}

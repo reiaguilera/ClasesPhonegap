@@ -22,6 +22,9 @@
     // onSuccess: Get a snapshot of the current contacts
     //
     function onSuccess(contacts) {
+        var myresult = document.getElementById("result");
+        vat string = "";
+
         for (var i=0; i<contacts.length; i++) {
             alert("Formatted: " + contacts[i].name.formatted + "\n" +
                     "Family Name: "  + contacts[i].name.familyName + "\n" +
@@ -41,7 +44,7 @@
     </script>
   </head>
   <body>
-    <h1>Example</h1>
-    <p>Find Contacts</p>
+    <h1>Lista de Contactos</h1>
+    <div id="result"></div>
   </body>
 </html>

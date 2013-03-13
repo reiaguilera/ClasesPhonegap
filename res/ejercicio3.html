@@ -3,7 +3,7 @@
   <head>
     <title>Connectivity Example</title>
 
-    <script type="text/javascript" src="cordova-2.4.0.js"></script>
+    <script type="text/javascript" src="js/cordova-2.4.0.js"></script>
     <script type="text/javascript" charset="utf-8">
 
 document.addEventListener("deviceready", onDeviceReady, false);
@@ -13,6 +13,7 @@ function onDeviceReady() {
     }
 
     function checkConnection() {
+        console.log("error");
         var networkState = navigator.network.connection.type;
 
         var states = {};
