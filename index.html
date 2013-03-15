@@ -4,72 +4,132 @@
   <head>
     <title>Notifications</title>
 
-    <script type="text/javascript" src="cordova-2.4.0.js"></script>
-    <script type="text/javascript" charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/jquery.mobile-1.3.0.min.css" />
+<link rel="stylesheet" href="css/application.css" />
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.mobile-1.3.0.min.js"></script>
+<script type="text/javascript" src="cordova-2.5.0.js"></script>
+</head>
 
-    // Wait for PhoneGap to load
-    //
-    function onLoad() {
-        document.addEventListener("deviceready", onDeviceReady, false);
-    }
+<body>
 
-    // PhoneGap is ready
-    //
-    function onDeviceReady() {
-        // Empty
-    }
+<!-- ////////// Home -->
+    <article data-role='page' id='main'>
+      <header data-position='fixed' data-role='header'>
+        <h1>MyAPP</h1>
+      </header>
+      <section data-role='content'>
+        <ul data-role="listview" data-inset="true">
+            <li><a href="#test1">Lista de Contactos</a></li>
+            <li><a href="#cam">Camara</a></li>
+            <li><a href="#conex">Conexion</a></li>
+            <li><a href="#test4">Ejercicio 4</a></li>
+            <li><a href="#compass">Compass</a></li>
+            <li><a href="#db1">Crear una DB</a></li>
+            <li><a href="#db2">LocalStorage</a></li>
+            <li><a href="#FS">File</a></li>
 
-    // Show a custom alert
-    //
-    function showAlert() {
-        navigator.notification.alert(
-            'Game Over!',  // message
-            alertCallback,   //callback
-            'Game Over',            // title
-            'Done'                  // buttonName
-        );
-    }
+        </ul>
 
-    //alert call back
-    function alertCallback(){
-      //do something... like calculate final score
-    }
+      </section>
+    </article>
 
-    // process the confirmation dialog result
-    function onConfirm(button) {
-        alert('bptpn ' + button);
-    }
-
-    // Show a custom confirmation dialog
-    //
-    function showConfirm() {
-        navigator.notification.confirm(
-            'Game Over!',  // message
-            onConfirm,     // callback to invoke with index of button pressed
-            'Game Over',   // title
-            'Restart,Exit' // buttonLabels
-        );
-    }
+    <article data-role='page' id="test1">
+      <header data-role='header'>
+        <h1>Lista de contactos</h1>
+        <a data-icon='arrow-l' data-rel='back'>Home</a>
+      </header>
+      <section id="results" data-role='content'>
+        <ul data-role='listview' id='entries-list'></ul>
+      </section>
+    </article>
 
 
-    // Beep twice
-    //
-    function playBeep() {
-        navigator.notification.beep(2);
-    }
+<article data-role='page' id="cam">
+      <header data-role='header'>
+        <h1>Camara de Foto</h1>
+        <a data-icon='arrow-l' data-rel='back'>Home</a>
+      </header>
+      <section id="results" data-role='content'>
+        <button onclick="capturePhoto();">Tomar Foto</button> <br>
+        <img style="display:none;width:60px;height:60px;" id="myImage" src="" />
+      </section>
+    </article>
 
-    // Vibrate for 4 seconds
-    //
-    function vibrate() {
-        navigator.notification.vibrate(4000);
-    }
 
-    </script>
-  </head>
-  <body onload="onLoad()">
-    <p><a href="#" onclick="showAlert(); return false;">Show Alert</a></p>
-     <p><a href="#" onclick="showConfirm(); return false;">Show Confirmation</a></p>
-   <p><a href="#" onclick="playBeep(); return false;">Play Beep</a></p>
-    <p><a href="#" onclick="vibrate(); return false;">Vibrate</a></p>
+<article data-role='page' id="conex">
+      <header data-role='header'>
+        <h1>Conexion</h1>
+        <a data-icon='arrow-l' data-rel='back'>Home</a>
+      </header>
+      <section id="results" data-role='content'>
+        <div id="resultscone"></div>
+      </section>
+    </article>
+
+
+
+
+    <article data-role='page' id="compass">
+      <header data-role='header'>
+        <h1>Conexion</h1>
+        <a data-icon='arrow-l' data-rel='back'>Home</a>
+      </header>
+      <section id="results" data-role='content'>
+        <div id="heading">Waiting for heading...</div>
+    <button onclick="startWatch();">Start Watching</button>
+    <button onclick="stopWatch();">Stop Watching</button>
+
+        <div id="resultscone"></div>
+      </section>
+    </article>
+
+    <article data-role='page' id="db1">
+      <header data-role='header'>
+        <h1>Base de Datos</h1>
+        <a data-icon='arrow-l' data-rel='back'>Home</a>
+      </header>
+      <section id="results" data-role='content'>
+        <div id="heading">Creando Base de Datos
+        </div><div id="resultsDB"></div>
+    <button onclick="createDB();">Crear DB</button>
+    <button onclick="recuperaROW();">Agregar DB</button>
+    <button onclick="deleteROW();">Borrar registro</button>
+    <button onclick="deleteTABLE();">Borrar DB</button>
+      </section>
+    </article>
+
+
+    <article data-role='page' id="db2">
+      <header data-role='header'>
+        <h1>LocalStorage</h1>
+        <a data-icon='arrow-l' data-rel='back'>Home</a>
+      </header>
+      <section id="results" data-role='content'>
+         <form>
+    <p>Cual es tu nombre?<br/>
+     <input type='text' id='DBname' onKeyUp='storeName()'></br>
+     <input type='text' id='DBclear' onKeyUp='clearLS()'>
+     </p>
+     <!-- <input type='text' id='DBname' onKeyUp='storeName()'></p> -->
+     </form>
+      <div id="DBresult"></div>
+      </section>
+    </article>
+
+
+    <article data-role='page' id="FS">
+      <header data-role='header'>
+        <h1>filesystem</h1>
+        <a data-icon='arrow-l' data-rel='back'>Home</a>
+      </header>
+      <section id="results" data-role='content'>
+         <button onclick="fileSys();">FileSystem DB</button>
+      <div id="DBresult"></div>
+      </section>
+    </article>
+
+<script src="js/app1.js"></script>
   </body>
 </html>

@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" 
+     "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <title>File Transfer Example</title>
+
+<script type="text/javascript" src="cordova-2.4.0.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+  document.addEventListener("deviceready", onDeviceReady, false);
+
+ 
+        function onDeviceReady() {
+
+            // Take a picture then upload
+            navigator.camera.getPicture(uploadPhoto,
+                                        function(message) { alert('get picture 
+                                             failed'); },
+                                        { quality: 50, 
+                                        destinationType: 
+                                             navigator.camera
+                                             .DestinationType.FILE_URI,
+                                        sourceType: 
+                                             navigator.camera.PictureSourceType
+                                            .CAMERA}
+                                        );
+
+        }
+
+        function uploadPhoto(imageURI) {
+            var options = new FileUploadOptions();
+            options.fileKey="file";
+            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+            options.mimeType="image/jpeg";
+
+            var params = new Object();
+            params.value1 = "test value";
+            params.value2 = "param value";
+
+            options.params = params;
+
+            var ft = new FileTransfer();
+            ft.upload(imageURI, "http://example.com/upload.php", success, fail, 
+                 options);
+        }
+
+        function success(r) {
+            alert("Code = " + r.responseCode);
+            alert("Response = " + r.response);
+            alert("Sent = " + r.bytesSent);
+        }
+
+        function fail(error) {
+            alert("An error has occurred: Code = " = error.code);
+        }
+
+        </script>
+</head>
+<body>
+    <h1>Upload file</h1>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contact Example</title>
+
+    <script type="text/javascript" src="cordova-2.4.0.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+  
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+ 
+    function onDeviceReady() {
+        var options = new ContactFindOptions();
+        options.filter="Acme Corporation";
+        filter = ["displayName","organizations"];
+        navigator.contacts.find(filter, onSuccess, onError, options);
+    }
+
+ 
+    function onSuccess(contacts) {
+        var myresults = document.getElementById("results");
+        var string = "";
+        for (var i=0; i<contacts.length; i++) {
+            for (var j=0; j<contacts[i].organizations.length; j++) {
+                string += "Name: " + contacts[i].displayName + "<br/>" +
+                     "Org Name: " + contacts[i].organizations[j].name + "\n" + 
+                     "Department: "  contacts[i].organizations[j].department 
+                      + "<br/>" + 
+                     "Title: "  + contacts[i].organizations[j].title);
+            }
+        }
+
+        myresults.innerHTML = string;
+    }
+
+   function onError(contactError) {
+        alert('Ooops!');
+    }
+
+    </script>
+  </head>
+  <body>
+    <h1>Contacts</h1>
+    <div id="results"></div>
+  </body>
+</html>

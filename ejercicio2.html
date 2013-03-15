@@ -1,31 +1,31 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
                       "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-  <head>
-    <title>My Device</title>
+<head>
+<title>My Device</title>
 
-    <script type="text/javascript" src="cordova-2.4.0.js"></script>
-    <script type="text/javascript" charset="utf-8">
-
-    function onLoad() {
-        document.addEventListener("deviceready", onDeviceReady, false);
+<script type="text/javascript" src="cordova-2.5.0.js"></script>
+<script type="text/javascript" charset="utf-8">
+	try{
+	    function onLoad() {
+	    	console.log("OnLoad...");
+	        document.addEventListener("deviceready", function(){
+		        var myDiv = document.getElementById('props');
+		
+		        myDiv.innerHTML =   'Device Name: '     + device.name     + '<br />' +
+		                            'Device PhoneGap: ' + device.phonegap + '<br />' +
+		                            'Device Platform: ' + device.platform + '<br />' +
+		                            'Device UUID: '     + device.uuid     + '<br />' +
+		                            'Device Version: '  + device.version  + '<br />'; 
+	        });
+	    }
+    }catch(err){
+    	console.log('Error: ' + err);
     }
-
-    // okay, PhoneGap is ready
-    //
-    function onDeviceReady() {
-        var myDiv = document.getElementById('props');
-
-        myDiv.innerHTML =   'Device Name: '     + device.name     + '<br />' +
-                            'Device PhoneGap: ' + device.phonegap + '<br />' +
-                            'Device Platform: ' + device.platform + '<br />' +
-                            'Device UUID: '     + device.uuid     + '<br />' +
-                            'Device Version: '  + device.version  + '<br />';
-    }
-
+   
     </script>
-  </head>
-  <body onload="onLoad()">
-    <p id="props">Loading device properties...</p>
-  </body>
+</head>
+<body onload="onLoad()">
+	<p id="props">We're loading device properties...</p>
+</body>
 </html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>localStorage Example</title>
+
+<script type="text/javascript" src="cordova-2.4.0.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    function onDeviceReady() {
+
+    }
+
+     function storeName(){
+          var myName = document.getElementById("name").value;
+          window.localStorage.setItem("name", myName);
+
+          var result = document.getElementById("result");
+          result.innerHTML = "Your name is " + window.localStorage.getItem("name");
+          return false;
+     }
+
+
+    </script>
+  </head>
+  <body>
+
+
+     <div id='result'></div>
+  </body>
+</html>

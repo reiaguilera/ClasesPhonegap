@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+                      "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>Notifications</title>
+
+    <script type="text/javascript" src="cordova-2.4.0.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+    // Wait for PhoneGap to load
+    //
+    function onLoad() {
+        document.addEventListener("deviceready", onDeviceReady, false);
+    }
+
+    // PhoneGap is ready
+    //
+    function onDeviceReady() {
+        // Empty
+    }
+
+    // Show a custom alert
+    //
+    function showAlert() {
+        navigator.notification.alert(
+            'Game Over!',  // message
+            alertCallback,   //callback
+            'Game Over',            // title
+            'Done'                  // buttonName
+        );
+    }
+
+    //alert call back
+    function alertCallback(){
+      //do something... like calculate final score
+    }
+
+    // process the confirmation dialog result
+    function onConfirm(button) {
+        alert('bptpn ' + button);
+    }
+
+    // Show a custom confirmation dialog
+    //
+    function showConfirm() {
+        navigator.notification.confirm(
+            'Game Over!',  // message
+            onConfirm,     // callback to invoke with index of button pressed
+            'Game Over',   // title
+            'Restart,Exit' // buttonLabels
+        );
+    }
+
+
+    // Beep twice
+    //
+    function playBeep() {
+        navigator.notification.beep(2);
+    }
+
+    // Vibrate for 4 seconds
+    //
+    function vibrate() {
+        navigator.notification.vibrate(4000);
+    }
+
+    </script>
+  </head>
+  <body onload="onLoad()">
+    <p><a href="#" onclick="showAlert(); return false;">Show Alert</a></p>
+     <p><a href="#" onclick="showConfirm(); return false;">Show Confirmation</a></p>
+   <p><a href="#" onclick="playBeep(); return false;">Play Beep</a></p>
+    <p><a href="#" onclick="vibrate(); return false;">Vibrate</a></p>
+  </body>
+</html>

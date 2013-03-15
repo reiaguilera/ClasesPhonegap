@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>PhoneGap Evetos</title>
+<head>
+<title>PhoneGap Evetos</title>
 
-            <script type="text/javascript" src="cordova-2.4.0.js"></script>
+<script type="text/javascript" src="cordova-2.5.0.js"></script>
 
-    <script type="text/javascript" charset="utf-8">
+<script type="text/javascript" charset="utf-8">
 
     document.addEventListener("deviceready", onDeviceReady, false);
 
     function onDeviceReady() {
+    	alert('On device ready!);
         // Register the event listeners
         document.addEventListener("pause", onPause, false);
         document.addEventListener("resume", onResume, false);
@@ -29,7 +30,7 @@
 
 
     </script>
-  </head>
-  <body>
-  </body>
+</head>
+<body>
+</body>
 </html>
